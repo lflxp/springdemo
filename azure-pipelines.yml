@@ -15,6 +15,19 @@ stages:
 - stage: Build
   displayName: Build image
   jobs:  
+  - job:  Maven
+    displayName: Maven build
+    pool:
+      vmImage: 'maven'
+    steps:
+      - task: Bash@3
+        inputs:
+          targetType: 'inline'
+          script: |
+            # Write your commands here
+            
+            echo 'Hello world'
+            mvn clean package
   - job: Build
     displayName: Build
     pool:
