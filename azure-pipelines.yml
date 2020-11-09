@@ -18,16 +18,12 @@ stages:
   - job:  Maven
     displayName: Maven build
     pool:
-      vmImage: 'maven'
+      vmImage: 'maven:latest'
     steps:
-      - task: Bash@3
-        inputs:
-          targetType: 'inline'
-          script: |
-            # Write your commands here
-            
-            echo 'Hello world'
-            mvn clean package
+    - task: Docker@2
+      inputs:
+        command: 'maven clean package'
+        container: 'maven'
   - job: Build
     displayName: Build
     pool:
